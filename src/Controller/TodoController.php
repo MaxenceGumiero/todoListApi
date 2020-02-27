@@ -24,10 +24,10 @@ class TodoController extends AbstractController
         $serializer = new Serializer($normalizers, $encoders);
 
         $this->serializer = $serializer;
-    }
+    }   
 
     /**
-     * @Route("/todos", name="todos")
+     * @Route("/todos", name="todo_index")
      */
     public function index(TodoRepository $todoRepository)
     {
@@ -46,7 +46,7 @@ class TodoController extends AbstractController
     }
 
     /**
-     * @Route("/todo/{todo}", name="todo")
+     * @Route("/todo/{todo}", name="todo_show")
      */
     public function show(Todo $todo)
     {
