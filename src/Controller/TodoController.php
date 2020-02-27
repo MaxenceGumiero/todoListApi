@@ -46,7 +46,7 @@ class TodoController extends AbstractController
     }
 
     /**
-     * @Route("/todo/{todo}", name="todo_show")
+     * @Route("/todos/{todo}", name="todo_show")
      */
     public function show(Todo $todo)
     {
