@@ -7,6 +7,7 @@ use App\Repository\TodoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -43,6 +44,20 @@ class TodoController extends AbstractController
         $response->headers->set('Access-Control-Allow-Methods', '"GET, PUT, POST, DELETE, HEAD, OPTIONS"');
 
         return $response;
+    }
+
+    /**
+     * @Route("/todos/new", name="todo_new", methods={"POST"})
+     */
+    public function new(Request $request)
+    {
+        dd($request);
+        $todo = new Todo();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($todo);
+        $entityManager->flush();
+
     }
 
     /**
